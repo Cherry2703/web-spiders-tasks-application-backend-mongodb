@@ -146,7 +146,7 @@ app.post('/login', async (req, res) => {
     }
 
 
-    console.log(username,password,'login route called');
+    // console.log(username,password,'login route called');
     
 
   try {
@@ -180,7 +180,7 @@ const validateTodoData = (req, res, next) => {
 
 // Task Routes
 app.get('/tasks/', authenticateToken, async (req, res) => {
-    console.log('tasks route called to get all tasks');
+    // console.log('tasks route called to get all tasks');
     
   try {
     const todos = await TodosModel.find({ user_id: req.userId });
@@ -195,7 +195,7 @@ app.get('/tasks/', authenticateToken, async (req, res) => {
 });
 
 app.post('/tasks/', authenticateToken, validateTodoData, async (req, res) => {
-    console.log('tasks route to add new task');
+    // console.log('tasks route to add new task');
     
   try {
     const { title, description, priority, status } = req.body;
