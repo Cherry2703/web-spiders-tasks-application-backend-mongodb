@@ -30,7 +30,7 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopol
   .catch((err) => console.error("MongoDB connection error:", err));
 
 // Define the Mongoose schema for users
-const userSchema = new mongoose.Schema({
+const userSchema = new mongoose.Schema({ 
   user_id: { type: String, unique: true }, // Unique identifier for the user
   username: { type: String, required: true }, // Username (required)
   email: { type: String, required: true, unique: true }, // Email (required, unique)
@@ -49,6 +49,10 @@ const todosSchema = new mongoose.Schema({
   status: String, // Task status (e.g., TODO, IN_PROGRESS, DONE)
   created_at: { type: Date, default: Date.now }, // Creation timestamp
 });
+
+
+mongoose.set('bufferTimeoutMS', 30000); // 30 seconds
+
 
 // Create models from schemas for interacting with MongoDB
 const UserModel = mongoose.model('users', userSchema);
